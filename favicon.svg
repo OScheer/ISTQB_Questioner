@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <!-- Background Container -->
+  <rect width="64" height="64" rx="14" fill="url(#bg-grad)" />
+  
+  <!-- Subtle inner border -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#60a5fa" stroke-width="2" stroke-opacity="0.4" />
+  
+  <!-- Stylized Shield & Verification Checkmark -->
+  <path d="M32 12 L48 18 V28 C48 38 41 47 32 52 C23 47 16 38 16 28 V18 Z" 
+        fill="#0f172a" 
+        fill-opacity="0.4"
+        stroke="#93c5fd" 
+        stroke-width="2.5" 
+        stroke-linejoin="round" />
+        
+  <path d="M24 29 L29.5 35 L40 23" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+</svg>

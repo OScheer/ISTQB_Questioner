@@ -135,6 +135,17 @@ header.app-header {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   letter-spacing: 0.05em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: var(--transition);
+}
+
+.brand-badge:hover {
+  background: var(--accent-primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .brand-title {

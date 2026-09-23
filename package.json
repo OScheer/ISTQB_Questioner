@@ -1,0 +1,17 @@
+{
+  "name": "istqb-fragenautomat",
+  "version": "1.0.0",
+  "description": "ISTQB CTFL 4.0 Fragenautomat mit 240 Originalfragen, GTB-Lösungen und Erklärungen",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "extract": ".venv/bin/python3 scripts/extract_questions.py"
+  },
+  "keywords": [
+    "istqb",
+    "ctfl",
+    "testing",
+    "quiz"
+  ],
+  "author": "",
+  "license": "ISC"
+}

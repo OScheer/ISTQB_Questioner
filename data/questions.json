@@ -828,7 +828,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Neu eingestellte Mitarbeitende einer Firma können individuelle Ziele mit ihren Vorgesetzten vereinbaren, an deren Erreichung die Auszahlung einer Prämie gekoppelt ist. Diese Prämie wird ihnen aber erst ausgezahlt, wenn sie länger als ein Jahr im Unternehmen beschäftigt sind. Die folgende Entscheidungstabelle enthält ausgewählte Testfälle zu diesem Sachverhalt: Testfall-ID\n\nT1 T2 T3 T4 T5 Bedingung1 Beschäftigung länger als ein Jahr? „J“ „N“ „N“ „J“ „N“ Bedingung2 Ziel vereinbart? „N“ „N“ „J“ „J“ „J“ Bedingung3 Ziel erreicht? „N“ „N“ „J“ „J“ „N“ Aktion Auszahlung der Prämie? „N“ „N“ „N“ „J“ „N“ Welcher der folgenden Testfälle beschreibt eine in der Praxis gültige, durchführbare Bedingungskombination mit fachlich korrekter erwarteter Aktion und fehlt in der oben aufgeführten Entscheidungstabelle?",
+    "stem": "Neu eingestellte Mitarbeitende einer Firma können individuelle Ziele mit ihren Vorgesetzten vereinbaren, an deren Erreichung die Auszahlung einer Prämie gekoppelt ist. Diese Prämie wird ihnen aber erst ausgezahlt, wenn sie länger als ein Jahr im Unternehmen beschäftigt sind.\n\nDie folgende Entscheidungstabelle enthält ausgewählte Testfälle zu diesem Sachverhalt:\n\nWelcher der folgenden Testfälle beschreibt eine in der Praxis gültige, durchführbare Bedingungskombination mit fachlich korrekter erwarteter Aktion und fehlt in der oben aufgeführten Entscheidungstabelle?",
     "options": {
       "a": "Bedingung1 = „J“, Bedingung2 = „N“, Bedingung3 = „J“, Aktion = „N“",
       "b": "Bedingung1 = „J“, Bedingung2 = „J“, Bedingung3 = „N“, Aktion = „J“",
@@ -857,7 +857,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – Die Bedingungskombination stellt eine undurchführbare Kombination dar, \ndenn wenn kein Ziel vereinbart wurde, kann das nicht vereinbarte Ziel auch nicht erreicht \nwerden. Daher handelt es sich nicht um ein in der Praxis vorkommendes gültiges \nb) FALSCH – Die Bedingungskombination ist eine gültige, vorkommende Situation, die \nAktion ist aber fachlich falsch. Da das Ziel nicht erreicht wurde, sollte keine Prämie \nc) FALSCH – Die Bedingungskombination stellt eine undurchführbare Kombination dar, \ndenn wenn kein Ziel vereinbart wurde, kann das nicht vereinbarte Ziel auch nicht erreicht \nwerden. Daher handelt es sich nicht um ein in der Praxis vorkommendes gültiges \nd) KORREKT – Der Testfall beschreibt die fachlich korrekte Situation, dass das \nNichterreichen des vereinbarten Ziels zur Nichtauszahlung der Prämie führt, wenn \neine mitarbeitende Person länger als ein Jahr beschäftigt ist. Diese Situation kann \nin der Praxis vorkommen, fehlt aber in der Entscheidungstabelle (vgl. CTFLLehrplan V4.0.2, Abschnitt 4.2.3, 2. Absatz).",
-    "images": []
+    "images": [
+      "data/images/set_a_q22_table.png"
+    ]
   },
   {
     "id": "set_a_q23",
@@ -1264,7 +1266,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie testen eine mobile Applikation, die es Benutzern ermöglicht, ein nahegelegenes Restaurant zu finden, das die gewünschte Art des Essens anbietet. Gegeben ist die folgende Liste von Testfällen, Prioritäten (eine kleinere Zahl bedeutet eine höhere Priorität) und Abhängigkeiten: Testfall-ID Abgedeckte Testbedingung Priorität logisch abhängig von TF 001 Art des Essens auswählen 3 Keinem Testfall TF 002 Restaurant auswählen 2 TF 001 TF 003 Wegbeschreibung bekommen 1 TF 002 TF 004 Restaurant anrufen 2 TF 002 TF 005 Reservierung vornehmen 3 TF 002\n\nWelcher der folgenden Testfälle soll als dritter ausgeführt werden?",
+    "stem": "Sie testen eine mobile Applikation, die es Benutzern ermöglicht, ein nahegelegenes Restaurant zu finden, das die gewünschte Art des Essens anbietet. Gegeben ist die folgende Liste von Testfällen, Prioritäten (eine kleinere Zahl bedeutet eine höhere Priorität) und logischen Abhängigkeiten:\n\nWelcher der folgenden Testfälle soll als dritter ausgeführt werden?",
     "options": {
       "a": "TF 003",
       "b": "TF 005",
@@ -1293,7 +1295,9 @@
       }
     },
     "raw_explanation": "Der Test TF 001 muss zuerst durchgeführt werden, gefolgt von TF 002, um die \nAbhängigkeiten zu berücksichtigen. Danach folgt TF 003, da nach Erfüllung der \nAbhängigkeiten dieser Testfall die höchste Priorität, d. h. die niedrigste Prioritätszahl, \nbesitzt. \na) KORREKT \nb) FALSCH – TF 005 ist nach TF 002 ausführbar, hat aber eine niedrigere Priorität \nals TF 003 und TF 004. \nc) FALSCH – TF 002 muss bereits als zweiter Testfall ausgeführt werden, damit die \nabhängigen Testfälle ausführbar werden. \nd) FALSCH – TF 001 muss bereits als erster Testfall ausgeführt werden, da TF 002 \ndavon abhängt.",
-    "images": []
+    "images": [
+      "data/images/set_a_q33_table.png"
+    ]
   },
   {
     "id": "set_a_q34",
@@ -2399,7 +2403,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Die folgende Entscheidungstabelle enthält die Regeln zur Bestimmung des Risikos für Arteriosklerose (Arterienverkalkung) auf der Grundlage der Cholesterin- und Blutdruckwerte des Patienten.\n\nRegel 1 Regel 2 Regel 3 Regel 4 Regel 5 Bedingungen Cholesterin (mg/dl) ≤124 ≤ 124 125 – 200 125 – 200 ≥ 201 Blutdruck (mmHg) ≤ 140 > 140 ≤ 140 > 140 – Aktion Risikoniveau sehr gering gering mittel hoch sehr hoch Sie haben die Testfälle mit den folgenden Testdaten entworfen: TC1: Cholesterin = 125 mg/dl – Blutdruck = 141 mm Hg TC2: Cholesterin = 200 mg/dl – Blutdruck = 201 mm Hg TC3: Cholesterin = 124 mg/dl – Blutdruck = 201 mm Hg TC4: Cholesterin = 109 mg/dl – Blutdruck = 200 mm Hg TC5: Cholesterin = 201 mg/dl – Blutdruck = 140 mm Hg Welche Überdeckung der Entscheidungstabelle wird durch diese Testfälle erreicht?",
+    "stem": "Die folgende Entscheidungstabelle enthält die Regeln zur Bestimmung des Risikos für Arteriosklerose (Arterienverkalkung) auf der Grundlage der Cholesterin- und Blutdruckwerte des Patienten:\n\nSie haben die Testfälle mit den folgenden Testdaten entworfen:\n• TC1: Cholesterin = 125 mg/dl – Blutdruck = 141 mm Hg\n• TC2: Cholesterin = 200 mg/dl – Blutdruck = 201 mm Hg\n• TC3: Cholesterin = 124 mg/dl – Blutdruck = 201 mm Hg\n• TC4: Cholesterin = 109 mg/dl – Blutdruck = 200 mm Hg\n• TC5: Cholesterin = 201 mg/dl – Blutdruck = 140 mm Hg\n\nWelche Überdeckung der Entscheidungstabelle wird durch diese Testfälle erreicht?",
     "options": {
       "a": "40 %",
       "b": "60 %",
@@ -2428,7 +2432,9 @@
       }
     },
     "raw_explanation": "Die Entscheidungstabelle besteht aus fünf Spalten. Jeder Testfall deckt eine dieser Spalten \nab. \nTC1 und TC2 decken beide Regel 4 ab. \nTC3 und TC4 decken beide Regel 2 ab. \nTC5 deckt Regel 5 ab. \nDiese fünf Testfälle decken also drei von fünf Spalten ab und erreichen eine Überdeckung \nFolglich ist Option b) die KORREKTE Option. \nDaher: \na) FALSCH \nb) KORREKT \nc) FALSCH \nd) FALSCH",
-    "images": []
+    "images": [
+      "data/images/set_b_q22_table.png"
+    ]
   },
   {
     "id": "set_b_q23",
@@ -2770,7 +2776,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie möchten den Testaufwand für ein neues Projekt mit Hilfe einer auf Kennzahlen basierenden Schätzung abschätzen. Sie berechnen das Verhältnis von Testaufwand zu Entwicklungsaufwand, indem Sie die Durchschnittsdaten sowohl für den Entwicklungs- als auch für den Testaufwand aus vier historischen Projekten verwenden, die dem neuen Projekt ähnlich sind. Die Tabelle zeigt unten diese historischen Daten. Projekt Entwicklungskosten (€) Testaufwand (€) P1 800.000 40.000 P2 1.200.000 130.000 P3 600.000 70.000 P4 1.000.000 120.000 Der geschätzte Entwicklungsaufwand für das neue Projekt beträgt 800.000 €. Wie hoch schätzen Sie den Testaufwand in diesem Projekt ein?",
+    "stem": "Sie möchten den Testaufwand für ein neues Projekt mit Hilfe einer auf Kennzahlen basierenden Schätzung abschätzen. Sie berechnen das Verhältnis von Testaufwand zu Entwicklungsaufwand, indem Sie die Durchschnittsdaten sowohl für den Entwicklungs- als auch für den Testaufwand aus vier historischen Projekten verwenden, die dem neuen Projekt ähnlich sind.\n\nDie folgende Tabelle zeigt diese historischen Daten:\n\nDer geschätzte Entwicklungsaufwand für das neue Projekt beträgt 800.000 €.\nWie hoch schätzen Sie den Testaufwand in diesem Projekt ein?",
     "options": {
       "a": "40.000 €",
       "b": "80.000 €",
@@ -2799,7 +2805,9 @@
       }
     },
     "raw_explanation": "Das genutzte Schätzverfahren basiert auf Verhältniszahlen, die sich aus den \nDurchschnittswerten historischer und ähnlicher Projekte als Kennzahlen ergeben (siehe \nDer durchschnittliche Entwicklungsaufwand betrug 900.000 € (Summe: 3.600.000 €) und der \ndurchschnittliche Testaufwand 90.000 € (Summe: 360.000 €), berechnet aus den vier \nProjekten. \nDas durchschnittliche Verhältnis von Testaufwand zu Entwicklungsaufwand beträgt 1:10 \n(90.000 €: 900.000 €), d. h., der Testaufwand betrug im Durchschnitt 10 % des \nEntwicklungsaufwands. \nWenn also ein Entwicklungsaufwand von 800.000 € erwartet wird, kann der Testaufwand wie \nfolgt geschätzt werden: \n10 % * 800.000 € = 0,1 * 800.000 € = 80.000 €. \nFolglich: \na) FALSCH \nb) KORREKT \nc) FALSCH \nd) FALSCH",
-    "images": []
+    "images": [
+      "data/images/set_b_q31_table.png"
+    ]
   },
   {
     "id": "set_b_q32",
@@ -2811,7 +2819,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie wurden gebeten, eine optimale, risikobasierte Ausführungsreihenfolge der folgenden Testfälle festzulegen, die bereits priorisiert und auf mögliche Abhängigkeiten hin untersucht wurden: Testfall-ID Priorität Abhängig von T1 3 - T2 1 T1 T3 3 T2 T4 3 T2 T5 1 T3 T6 2 T4 Priorität 1 ist dringlicher als Priorität 2 usw. Welche der folgenden Testabläufe berücksichtigt die oben genannten Abhängigkeiten und Prioritäten?",
+    "stem": "Sie wurden gebeten, eine optimale, risikobasierte Ausführungsreihenfolge der folgenden Testfälle festzulegen, die bereits priorisiert und auf mögliche Abhängigkeiten hin untersucht wurden:\n\nHinweis: Priorität 1 ist dringlicher als Priorität 2 usw.\n\nWelcher der folgenden Testabläufe berücksichtigt die oben genannten Abhängigkeiten und Prioritäten?",
     "options": {
       "a": "T1 → T2 → T4 → T5 → T3 → T6",
       "b": "T1 → T2 → T3 → T4 → T5 → T6",
@@ -2840,7 +2848,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – T5 ist von T3 abhängig, d. h., dass T3 vor T5 ausgeführt werden muss. \nb) FALSCH – T5 ist dringlicher als T4, so dass nach Ausführung von T3 als Nächstes T5 \nausgeführt werden sollte. \nc) FALSCH – T5 ist dringlicher als T4, so dass T4 nach T3 und T5 ausgeführt werden sollte, \nnicht davor. \nd) KORREKT – Dieser Testausführungsplan berücksichtigt die Abhängigkeiten und \nPrioritäten korrekt. Der Testfall mit der höchsten Priorität (T5) benötigt T3. Dadurch wird \nT3 früher ausgeführt als der gleich priorisierte Testfall T4. T4 wird nach T5 ausgeführt, \ndamit abschließend T6 ausgeführt werden kann.",
-    "images": []
+    "images": [
+      "data/images/set_b_q32_table.png"
+    ]
   },
   {
     "id": "set_b_q33",
@@ -4049,7 +4059,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Gegeben ist ein System zur Analyse von Fahrprüfungsergebnissen. Die folgenden Regeln wurden in einer Entscheidungstabelle formuliert:\n\nR1 R2 R3 C1: Erster Prüfungsversuch? - - F C2: Theoretische Prüfung bestanden? T F - C3: Praktische Prüfung bestanden? T - F Führerschein ausstellen? X\n\nZusätzliche Fahrstunden anfordern?\n\nX Antrag auf Wiederholung der Prüfung?\n\nX\n\nWelche Kombination von Eingabedaten zeigt, dass die Entscheidungstabelle widersprüchliche Regeln enthält?",
+    "stem": "Gegeben ist ein System zur Analyse von Fahrprüfungsergebnissen. Die folgenden Regeln wurden in einer Entscheidungstabelle formuliert:\n\nWelche Kombination von Eingabedaten zeigt, dass die Entscheidungstabelle widersprüchliche Regeln enthält?",
     "options": {
       "a": "C1 = T, C2 = T, C3 = F",
       "b": "C1 = T, C2 = F, C3 = T",
@@ -4078,7 +4088,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – Diese Kombination (T, T, F) entspricht keiner Regel (R1, R2 oder R3). Das \nzeigt, dass es sich um eine Auslassung handelt, aber nicht um einen Widerspruch (siehe \nb) FALSCH – Diese Kombination (T, F, T) entspricht nur der Regel R2, so dass kein \n4.2.3). \nc) FALSCH – Beide Kombinationen (T, T, T) und (F, T, T) stimmen nur mit einer \nSpalte/Regel R1 überein. Es gibt daher keinen Widerspruch zwischen den Regeln (siehe \nd) KORREKT – Die Kombination (F, F, F) erfüllt sowohl R2 als auch R3. Nach R2 soll ein \nAntrag auf Wiederholung der Prüfung gestellt werden, während zusätzliche Fahrstunden \nnicht vorgesehen sind. Nach R3 sollen zusätzliche Fahrstunden angefordert werden, \nwährend ein Antrag auf Wiederholung nicht vorgesehen ist. Damit führen zwei \nzutreffende Regeln für dieselbe Eingabekombination zu unterschiedlichen \nAktionsmustern; dies zeigt einen Widerspruch in der Entscheidungstabelle (siehe CTFLLehrplan V4.0.2, Abschnitt 4.2.3, letzter Absatz: „… Widersprüche in den Anforderungen \n…“). \nFazit: \nDie Antwort d) ist korrekt, da diese Kombination einen Widerspruch zwischen den Regeln \nR2 und R3 in der Entscheidungstabelle zeigt.",
-    "images": []
+    "images": [
+      "data/images/set_c_q22_table.png"
+    ]
   },
   {
     "id": "set_c_q23",
@@ -5707,7 +5719,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie entwerfen Testfälle basierend auf der folgenden Entscheidungstabelle.\n\nR1 R2 R3 R4 R5 R6 R7 C1: Alter 0-18 19-65 19-65 >65 0-18 19-65 >65 C2: Erfahrung - 0-4 >4 - - - - C3: Registriert? NEIN NEIN NEIN NEIN JA JA JA Kategorie A A B B B D C Bisher haben Sie die folgenden Testfälle entworfen:\n• TC1: 19-jähriger, nicht registrierter Mann ohne Erfahrung; erwartetes Ergebnis: Kategorie A\n• TC2: 65-jährige, nicht registrierte Frau mit 5 Jahren Erfahrung; erwartetes Ergebnis: Kategorie B\n• TC3: 66-jähriger, registrierter Mann ohne Erfahrung; erwartetes Ergebnis: Kategorie C\n• TC4: 65-jährige, registrierte Frau mit 4 Jahren Erfahrung; erwartetes Ergebnis: Kategorie D Welcher der folgenden Testfälle erhöht die Überdeckung der Entscheidungstabelle, wenn er zu den bestehenden Testfällen hinzugefügt wird?",
+    "stem": "Sie entwerfen Testfälle basierend auf der folgenden Entscheidungstabelle:\n\nBisher haben Sie die folgenden Testfälle entworfen:\n• TC1: 19-jähriger, nicht registrierter Mann ohne Erfahrung; erwartetes Ergebnis: Kategorie A\n• TC2: 65-jährige, nicht registrierte Frau mit 5 Jahren Erfahrung; erwartetes Ergebnis: Kategorie B\n• TC3: 66-jähriger, registrierter Mann ohne Erfahrung; erwartetes Ergebnis: Kategorie C\n• TC4: 65-jährige, registrierte Frau mit 4 Jahren Erfahrung; erwartetes Ergebnis: Kategorie D\n\nWelcher der folgenden Testfälle erhöht die Überdeckung der Entscheidungstabelle, wenn er zu den bestehenden Testfällen hinzugefügt wird?",
     "options": {
       "a": "66-jähriger, nicht registrierter Mann ohne Erfahrung; erwartetes Ergebnis: Kategorie B.",
       "b": "55-jährige, nicht registrierte Frau mit 2 Jahren Erfahrung; erwartetes Ergebnis: Kategorie A.",
@@ -5736,7 +5748,9 @@
       }
     },
     "raw_explanation": "Die Testfälle TC1, TC2, TC3 und TC4 decken jeweils die Regeln R2, R3, R7 und R6 in der \nEntscheidungstabelle ab. \na) KORREKT – Die Bedingungen „66-jährig“, „nicht registriert“ und „ohne \nErfahrung“ entsprechen der Regel R4, die bisher nicht von den bestehenden Testfällen \nabgedeckt wurde. Das Hinzufügen dieses Testfalls erhöht die Überdeckung der \nEntscheidungstabelle. \nb) FALSCH – Die Bedingungen „55-jährig“, „nicht registriert“ und „2 Jahre \nErfahrung“ entsprechen der Regel R2, die bereits durch TC1 abgedeckt ist. Das \nHinzufügen dieses Testfalls erhöht die Überdeckung nicht. \nc) FALSCH – Die Bedingungen „19-jährig“, „registriert“ und „5 Jahre \nErfahrung“ entsprechen der Regel R6, die bereits durch TC4 abgedeckt ist. Das \nHinzufügen dieses Testfalls erhöht die Überdeckung nicht. \nd) FALSCH – Die bestehenden Testfälle decken nur 4 von 7 Spalten der \nEntscheidungstabelle ab. Die Überdeckung kann durch Hinzufügen von Testfällen, die \nRegeln wie R1, R4 oder R5 abdecken, erhöht werden.",
-    "images": []
+    "images": [
+      "data/images/set_d_q22_table.png"
+    ]
   },
   {
     "id": "set_d_q23",
@@ -5748,7 +5762,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie wenden den Zustandsübergangstest auf das Zimmerreservierungssystem an, das durch die folgende Zustandsübergangstabelle mit vier Zuständen und fünf Ereignissen modelliert wird.\n\nEreignisse Zustand Verfügbar Nicht verfügbar Zimmer wechseln Stornieren Bezahlen S1: Anfordern S2 S3\n\nS2: Bestätigt\n\nS1 S4 S4 S3: Warteliste S2\n\nS4\n\nS4: Ende\n\nAngenommen, alle Testfälle beginnen im Zustand „Anfordern“. Welcher der folgenden Testfälle (Abfolge von Ereignissen), erreicht die GRÖßTMÖGLICHE ÜBERDECKUNG GÜLTIGER ÜBERGÄNGE?",
+    "stem": "Sie wenden den Zustandsübergangstest auf das Zimmerreservierungssystem an, das durch die folgende Zustandsübergangstabelle mit vier Zuständen und fünf Ereignissen modelliert wird:\n\nAngenommen, alle Testfälle beginnen im Zustand „Anfordern“.\nWelcher der folgenden Testfälle (Abfolge von Ereignissen) erreicht die GRÖSSTMÖGLICHE ÜBERDECKUNG GÜLTIGER ÜBERGÄNGE?",
     "options": {
       "a": "Nicht verfügbar, Verfügbar, Zimmer wechseln, Nicht verfügbar, Stornieren",
       "b": "Verfügbar, Zimmer wechseln, Nicht verfügbar, Verfügbar, Bezahlen",
@@ -5777,7 +5791,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – Diese Abfolge von fünf Ereignissen deckt 4 verschiedene gültige Übergänge \nab (beide „Nicht verfügbar“-Ereignisse entsprechen demselben Übergang zwischen S1 \nund S3). Dieser Testfall deckt 4 von 7 gültigen Übergängen ab. \nb) KORREKT – Diese Abfolge von fünf Ereignissen deckt 5 verschiedene Übergänge ab \n(das erste „Verfügbar“-Ereignis entspricht einem Übergang zwischen S1 und S2 und das \nzweite „Verfügbar“-Ereignis entspricht einem Übergang zwischen S3 und S2, so dass \nzwei verschiedene Übergänge abgedeckt werden). Dieser Testfall deckt 5 von 7 gültigen \nÜbergängen ab und erreicht die höchste gültige Übergangsüberdeckung. \nc) FALSCH – Diese Abfolge von fünf Ereignissen deckt 3 verschiedene Übergänge ab \n(beide „Verfügbar“-Ereignisse entsprechen demselben Übergang von S1 zu S2; beide \n„Zimmer wechseln“-Ereignisse entsprechen demselben Übergang von S2 zu S1). Dieser \nTestfall deckt 3 von 7 gültigen Übergängen ab. \nd) FALSCH – Diese Abfolge von fünf Ereignissen stellt keinen machbaren Testfall dar, da \nnach dem „Stornieren“-Ereignis das System im Endzustand endet und keine weiteren \ngültigen Übergänge ausgeführt werden können.",
-    "images": []
+    "images": [
+      "data/images/set_d_q23_table.png"
+    ]
   },
   {
     "id": "set_d_q24",
@@ -6119,7 +6135,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Die Tabelle zeigt die Nachverfolgbarkeitsmatrix zwischen Testfällen undu Anforderungen. Ein „X“ bedeutet, dass ein Testfall die Anforderung überdeckt.\n\nReq1 Req2 Req3 Req4 Req5 Req6 Req7 TC1 X\n\nX X\n\nX TC2 X\n\nX\n\nX TC3\n\nX X\n\nTC4\n\nX\n\nDie Testfälle sollen mithilfe des Verfahrens der zusätzlichen Überdeckung priorisiert und anschließend alle ausgeführt werden.\n\nWelcher Testfall sollte gemäß diesem Verfahren ALS LETZTER ausgeführt werden?",
+    "stem": "Die Tabelle zeigt die Nachverfolgbarkeitsmatrix zwischen Testfällen und Anforderungen. Ein „X“ bedeutet, dass ein Testfall die Anforderung überdeckt:\n\nDie Testfälle sollen mithilfe des Verfahrens der zusätzlichen Überdeckung priorisiert und anschließend alle ausgeführt werden.\n\nWelcher Testfall sollte gemäß diesem Verfahren ALS LETZTER ausgeführt werden?",
     "options": {
       "a": "TC1",
       "b": "TC2",
@@ -6148,7 +6164,9 @@
       }
     },
     "raw_explanation": "TC1 erreicht die höchste Überdeckung (4/7 – Req1, Req3, Req4 und Req7) und sollte daher \nzuerst ausgeführt werden. Req2, Req5 und Req6 sind noch nicht abgedeckt. Der nächste \nTestfall, der die höchste zusätzliche Überdeckung der verbleibenden Anforderungen erreicht, \nist TC3, der 2 dieser 3 Anforderungen (Req5 und Req6) abdeckt. Daher sollte TC3 als \nZweites ausgeführt werden. \nNun ist die einzige Anforderung, die noch nicht abgedeckt ist, Req2, die von TC4 abgedeckt \nwird. Daher sollte TC4 als dritter Testfall ausgeführt werden. \nDemnach wird der letzte ausgeführte Testfall TC2 sein. \nDaher: \na) FALSCH \nb) KORREKT \nc) FALSCH \nd) FALSCH",
-    "images": []
+    "images": [
+      "data/images/set_d_q32_table.png"
+    ]
   },
   {
     "id": "set_d_q33",
@@ -7267,7 +7285,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Ein Gerät zur Messung des täglichen Strahlungseinfalls für Pflanzen ermittelt einen Einstrahlungswert für Sonnenschein. Dieser ergibt sich aus der Kombination der Anzahl der Stunden, in denen eine Pflanze der Sonne ausgesetzt ist (unter 3 Stunden, 3 bis 6 Stunden, über 6 Stunden), und der durchschnittlichen Intensität des Sonnenscheins (sehr niedrig, niedrig, mittel, hoch). Die folgenden Testfälle existieren bereits:\n\nDauer (Stunden) Intensität Einstrahlung T1 1,5 sehr niedrig 10 T2 7,0 mittel 60 T3 0,5 sehr niedrig 10 Wie viele Testfälle müssen mindestens noch erzeugt werden, um eine vollständige Überdeckung ALLER GÜLTIGEN Eingabe-Äquivalenzklassen zu gewährleisten?",
+    "stem": "Ein Gerät zur Messung des täglichen Strahlungseinfalls für Pflanzen ermittelt einen Einstrahlungswert für Sonnenschein. Dieser ergibt sich aus der Kombination der Anzahl der Stunden, in denen eine Pflanze der Sonne ausgesetzt ist (unter 3 Stunden, 3 bis 6 Stunden, über 6 Stunden), und der durchschnittlichen Intensität des Sonnenscheins (sehr niedrig, niedrig, mittel, hoch).\n\nDie folgenden Testfälle existieren bereits:\n\nWie viele Testfälle müssen mindestens noch erzeugt werden, um eine vollständige Überdeckung ALLER GÜLTIGEN Eingabe-Äquivalenzklassen zu gewährleisten?",
     "options": {
       "a": "1",
       "b": "2",
@@ -7279,7 +7297,9 @@
     ],
     "explanations": {},
     "raw_explanation": "Die folgenden Äquivalenzklassen können identifiziert werden: \n• \nDauer: \n1. Unter 3 Stunden \n2. 3 – 6 Stunden \n3. Über 6 Stunden \n• \nIntensität: \n4. sehr niedrig \n5. niedrig \n6. mittel \n7. hoch \nDie existierenden Testfälle decken die folgenden gültigen Eingabe-Äquivalenzklassen ab: \n \nT1 \n1,5 (1) \nsehr niedrig (4) \n \nT2 \n7,0 (3) \nmittel (6) \nT3 \n0,5 (1) \nsehr niedrig (4) \nFolglich sind die fehlenden gültigen Eingabe-Äquivalenzklassen (2), (5) und (7). \nSie können mit zwei zusätzlichen Testfällen abgedeckt werden, da (2) sowohl mit (5) als \nauch mit (7) kombiniert werden kann. \nFolglich ist Antwort b) KORREKT.",
-    "images": []
+    "images": [
+      "data/images/set_e_q20_table.png"
+    ]
   },
   {
     "id": "set_e_q21",
@@ -7332,7 +7352,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Ein System zur Berechnung der Strafe für Geschwindigkeitsübertretungen im Straßenverkehr wird mit folgender Entscheidungstabelle spezifiziert:\n\nRegeln R1 R2 R3 R4 Bedingungen Geschwindigkeit > 50 J J N N Schulzone J N J N Aktionen 250 € Geldstrafe - X - - Führerscheinentzug X - - - Ihnen liegen bereits die folgenden Testfälle und deren Eingaben vor: TF1: Geschwindigkeit = 65, Schulzone = Ja TF2: Geschwindigkeit = 45, Schulzone = Ja TF3: Geschwindigkeit = 50, Schulzone = Nein TF4: Geschwindigkeit = 49, Schulzone = Nein Welche der Regeln der Entscheidungstabelle ist (noch) NICHT durch einen Testfall überdeckt?",
+    "stem": "Ein System zur Berechnung der Strafe für Geschwindigkeitsübertretungen im Straßenverkehr wird mit folgender Entscheidungstabelle spezifiziert:\n\nIhnen liegen bereits die folgenden Testfälle und deren Eingaben vor:\n• TF1: Geschwindigkeit = 65, Schulzone = Ja\n• TF2: Geschwindigkeit = 45, Schulzone = Ja\n• TF3: Geschwindigkeit = 50, Schulzone = Nein\n• TF4: Geschwindigkeit = 49, Schulzone = Nein\n\nWelche der Regeln der Entscheidungstabelle ist (noch) NICHT durch einen Testfall überdeckt?",
     "options": {
       "a": "Regel 4",
       "b": "Regel 1",
@@ -7361,7 +7381,9 @@
       }
     },
     "raw_explanation": "Regel 2 ist nicht überdeckt, da es keinen Testfall für die Eingaben Geschwindigkeit > 50 = Ja \nund Schulzone = Nein gibt. Ein möglicher Testfall wäre: \nTF5: Geschwindigkeit = 51, Schulzone = Nein \na) FALSCH – Regel 4 ist durch Testfälle 3 und 4 überdeckt. \nb) FALSCH – Regel 1 ist durch Testfall 1 überdeckt. \nc) KORREKT – Regel 2 ist nicht überdeckt. \nd) FALSCH – Regel 3 ist durch Testfall 2 überdeckt.",
-    "images": []
+    "images": [
+      "data/images/set_e_q22_table.png"
+    ]
   },
   {
     "id": "set_e_q23",
@@ -7751,7 +7773,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie wurden gebeten, eine optimale, risikobasierte Ausführungsreihenfolge nachfolgender Testfälle festzulegen, die bereits priorisiert und auf etwaige Abhängigkeiten hin untersucht wurden: Testfall-ID Priorität Abhängig von T7 2 - T8 1 T7 T9 3 T8 T10 3 T8 T11 1 T9 T12 2 T10 Priorität 1 ist dringlicher als Priorität 2 usw. Welche der folgenden Testabläufe berücksichtigt die oben genannten Abhängigkeiten und Prioritäten?",
+    "stem": "Sie wurden gebeten, eine optimale, risikobasierte Ausführungsreihenfolge nachfolgender Testfälle festzulegen, die bereits priorisiert und auf etwaige Abhängigkeiten hin untersucht wurden:\n\nHinweis: Priorität 1 ist dringlicher als Priorität 2 usw.\n\nWelche der folgenden Testabläufe berücksichtigt die oben genannten Abhängigkeiten und Prioritäten?",
     "options": {
       "a": "T7 -> T8 -> T10 -> T11 -> T9 -> T12",
       "b": "T7 -> T8 -> T9 -> T10 -> T11 -> T12",
@@ -7780,7 +7802,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – Diese Reihenfolge berücksichtigt nicht die Abhängigkeit von T11, der von T9 \nabhängig ist und daher nach T9 ausgeführt werden sollte. \nb) FALSCH – Diese Reihenfolge berücksichtigt nicht die Priorität von T11, der vor T10 \nausgeführt werden sollte (siehe auch Begründung zu Option d)). \nc) FALSCH – Diese Reihenfolge berücksichtigt nicht die Abhängigkeit und Priorität von T9 \nund T10, die von T8 abhängen. T8 aktiviert T9 und T10. Hier muss zum ersten Mal \npriorisiert werden: T9 und T10 haben beide Prio 3, aber T9 schaltet mit T11 einen Prio-\n1-Testfall frei, während T10 mit T12 nur einen Prio-2-Testfall freigibt. Somit wäre T9 \neindeutig besser für die optimale Reihenfolge, aber hier ist T10 vor T9 aufgeführt, was \nnicht die optimale Reihenfolge darstellt (siehe auch Begründung zu Option d)). \nd) KORREKT – Diese Reihenfolge berücksichtigt sowohl die Prioritäten als auch die \nAbhängigkeiten korrekt. \nIm Detail: \n• \nZu Beginn der Testausführung ist T7 alternativlos, da alle anderen Testfälle zunächst \nunerfüllte Abhängigkeiten haben. \n• \nT7 schaltet nur T8 frei, der deshalb als zweiter Testfall folgen muss. \n• \nT8 aktiviert T9 und T10. Hier muss zum ersten Mal priorisiert werden: T9 und T10 \nhaben beide Prio 3, aber T9 schaltet mit T11 einen Prio-1-Testfall frei, während T10 \nmit T12 nur einen Prio-2-Testfall freigibt. Somit ist T9 eindeutig besser. \n• \nJetzt sind T10 und T11 frei. T11 gewinnt eindeutig nach Priorität. \n• \nDanach ist T10 die einzige Option. \n• \nT12 wird zum Schlusslicht.",
-    "images": []
+    "images": [
+      "data/images/set_e_q33_table.png"
+    ]
   },
   {
     "id": "set_e_q34",
@@ -8850,7 +8874,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie testen ein System, das die Endnote für die Kursteilnehmer berechnet. Die Endnote wird auf der Grundlage der Gesamtpunktzahl zwischen 0 und 100 nach den folgenden Regeln ermittelt:  0 - 50 Punkte: nicht bestanden  51 - 70 Punkte: ausreichend  71 - 90 Punkte: gut  91 - 100 Punkte: sehr gut Sie haben die folgenden Testfälle vorbereitet:\n\nGesamtpunktzahl Endnote TF1 91 sehr gut TF2 50 nicht bestanden TF3 70 ausreichend TF4 100 sehr gut TF5 90 gut TF6 0 nicht bestanden Wie hoch ist die Überdeckung der 2-Wert-Grenzwertanalyse, die mit den vorhandenen Testfällen erreicht wird?",
+    "stem": "Sie testen ein System, das die Endnote für die Kursteilnehmer berechnet. Die Endnote wird auf der Grundlage der Gesamtpunktzahl zwischen 0 und 100 nach den folgenden Regeln ermittelt:\n• 0 - 50 Punkte: nicht bestanden\n• 51 - 70 Punkte: ausreichend\n• 71 - 90 Punkte: gut\n• 91 - 100 Punkte: sehr gut\n\nSie haben die folgenden Testfälle vorbereitet:\n\nWie hoch ist die Überdeckung der 2-Wert-Grenzwertanalyse, die mit den vorhandenen Testfällen erreicht wird?",
     "options": {
       "a": "60 %",
       "b": "75 %",
@@ -8879,7 +8903,9 @@
       }
     },
     "raw_explanation": "a) KORREKT – (60 %). Laut Lehrplan gibt es für jeden Grenzwert zwei \nÜberdeckungselemente: den Grenzwert und seinen nächsten Nachbarn, der zur \nangrenzenden Klasse gehört. Die 8 Grenzwerte sind 0, 50, 51, 70, 71, 90, 91 und 100 \nPunkte, die nächsten Nachbarn (-1, 51, 71, 91, 101) sind bis auf -1 und 101 darin \nenthalten. Die 6 Testfälle decken jeweils einen dieser 10 Grenzwerte ab. Somit werden \n60 % der möglichen gültigen Überdeckungselemente durch die Testfälle abgedeckt. \nb) FALSCH – (75 %). Sie haben die Anzahl der ausgeführten Grenzwerte (6) durch die \nAnzahl der möglichen Überdeckungselemente (8) ohne die Grenzwerte -1 und 101 \ndividiert. \nc) FALSCH – (33,3 %). Sie haben die Anzahl der ausgeführten Grenzwerte (6) durch die \nAnzahl der möglichen Überdeckungselemente gemäß 3-Wert-Grenzwertanalyse (18) \ndividiert (zusätzliche Werte bei 3-Wert-GA gegenüber 2-Wert-GA: 1, 49, 52, 69, 72, 89, \n92, 99). \nd) FALSCH – (100 %). Sie haben die Anzahl der ausgeführten Grenzwerte (6) durch die \nHälfte der möglichen Überdeckungselemente (5) bzw. die Äquivalenzklassen (5) geteilt.",
-    "images": []
+    "images": [
+      "data/images/set_f_q21_table.png"
+    ]
   },
   {
     "id": "set_f_q22",
@@ -8891,7 +8917,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Sie testen ein neues Customer-Relationship-Management-System für einen Fahrrad-Tagesverleih. Die Anforderungen an das System lauten wie folgt:  Jeder kann ein Fahrrad ausleihen, aber nur Mitglieder erhalten einen Rabatt von 20 %.  Wird die Rückgabefrist jedoch versäumt, kann der Rabatt nicht mehr in Anspruch genommen werden.  Nach 15 Ausleihen erhalten die Mitglieder ein T-Shirt geschenkt. Ein Tester hat die folgende Entscheidungstabelle entworfen, um die implementierten Funktionen zu testen (J=Wahr, N=Falsch, X=Aktion ausführen): Bedingungen R1 R2 R3 R4 R5 R6 R7 R8 ist Mitglied J J J J N N N N Frist versäumt J N J N J N J N\n15. Ausleihe N N J J N N J J Aktionen\n\n20 % Rabatt\n\nX\n\nX\n\nGeschenk-T-Shirt\n\nX X\n\nX Welche Regel (Kombination von Bedingungen und Aktionen) entspricht NICHT den oben angegebenen Anforderungen?",
+    "stem": "Sie testen ein neues Customer-Relationship-Management-System für einen Fahrrad-Tagesverleih. Die Anforderungen an das System lauten wie folgt:\n• Jeder kann ein Fahrrad ausleihen, aber nur Mitglieder erhalten einen Rabatt von 20 %.\n• Wird die Rückgabefrist jedoch versäumt, kann der Rabatt nicht mehr in Anspruch genommen werden.\n• Nach 15 Ausleihen erhalten die Mitglieder ein T-Shirt geschenkt.\n\nEin Tester hat die folgende Entscheidungstabelle entworfen, um die implementierten Funktionen zu testen (J=Wahr, N=Falsch, X=Aktion ausführen):\n\nWelche Regel (Kombination von Bedingungen und Aktionen) entspricht NICHT den oben angegebenen Anforderungen?",
     "options": {
       "a": "R4",
       "b": "R2",
@@ -8920,7 +8946,9 @@
       }
     },
     "raw_explanation": "a) FALSCH – Ein Mitglied, das keine Frist versäumt hat, kann nach 15 Fahrradausleihen \neinen Rabatt und ein T-Shirt als Geschenk erhalten. \nb) FALSCH – Ein Mitglied, das keine Frist versäumt hat, kann einen Rabatt erhalten. Da es \nnicht die 15. Fahrradausleihe war, bekommt es kein T-Shirt als Geschenk. \nc) FALSCH – Nichtmitglieder können keinen Rabatt erhalten, auch wenn sie noch keine \nFrist versäumt haben. \nd) KORREKT – Nur Mitglieder können ein T-Shirt als Geschenk erhalten. Daher ist die \nAktion nicht korrekt und diese Kombination sollte so nicht in der Entscheidungstabelle \nenthalten sein.",
-    "images": []
+    "images": [
+      "data/images/set_f_q22_table.png"
+    ]
   },
   {
     "id": "set_f_q23",
@@ -9344,7 +9372,7 @@
     "points": 1.0,
     "is_multi_select": false,
     "instruction": "Wählen Sie EINE Option! (1 aus 4)",
-    "stem": "Folgende Prioritäten und Abhängigkeiten der Testfälle sind gegeben: Testfall-ID Priorität Technische Abhängigkeit von: Logische Abhängigkeit von: TF1 Hoch TF4\n\nTF2 Niedrig\n\nTF3 Hoch\n\nTF4 TF4 Mittel\n\nTF5 Niedrig\n\nTF2 TF6 Mittel TF5\n\nWelcher der folgenden Testausführungspläne berücksichtigt AM BESTEN die Prioritäten sowie die technischen und logischen Abhängigkeiten?",
+    "stem": "Folgende Prioritäten und Abhängigkeiten der Testfälle sind gegeben:\n\nWelcher der folgenden Testausführungspläne berücksichtigt AM BESTEN die Prioritäten sowie die technischen und logischen Abhängigkeiten?",
     "options": {
       "a": "TF1 – TF3 – TF4 – TF6 – TF2 – TF5",
       "b": "TF4 – TF3 – TF1 – TF2 – TF5 – TF6",
@@ -9356,7 +9384,9 @@
     ],
     "explanations": {},
     "raw_explanation": "Die Testfälle sollten in der Reihenfolge ihrer Priorität ausgeführt werden, aber der \nAusführungsplan sollte auch die Abhängigkeiten berücksichtigen. \nDie beiden Testfälle mit der höchsten Priorität (TF1 und TF3) hängen beide von TF4 ab, \ndaher sollten die ersten drei Testfälle entweder in der Reihenfolge TF4 – TF1 – TF3 oder in \nder Reihenfolge TF4 – TF3 –TF1 ausgeführt werden (wir haben keine Möglichkeit, zwischen \nTF1 und TF3 zu unterscheiden). \nAls Nächstes müssen wir den verbleibenden Testfall mittlerer Priorität TF6 betrachten. TF6 \nhängt von TF5 ab, aber TF5 hängt von TF2 ab, also müssen die nächsten drei Testfälle in \nder folgenden Reihenfolge ausgeführt werden: TF2 – TF5 – TF6. \nEs gibt also zwei optimale Ausführungspläne: \n \nTF4 – TF1 – TF3 – TF2 – TF5 – TF6 oder \n \nTF4 – TF3 – TF1 – TF2 – TF5 – TF6 \nSomit ist Option b) KORREKT.",
-    "images": []
+    "images": [
+      "data/images/set_f_q33_table.png"
+    ]
   },
   {
     "id": "set_f_q34",

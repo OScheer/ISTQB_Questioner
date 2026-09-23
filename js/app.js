@@ -1,6 +1,6 @@
 /**
- * ISTQB® CTFL 4.0 Fragenautomat
- * Modern, interactive quiz trainer with 240 official questions.
+ * ISTQB® CTFL 4.0 Prüfungsportal
+ * Professionelles Lernsystem basierend auf 240 offiziellen GTB-Musterprüfungsfragen.
  */
 
 (function () {
@@ -16,21 +16,16 @@
   let activeFilterSet = 'ALL';
   let activeFilterK = 'ALL';
 
-  let soundEnabled = true;
-  let audioCtx = null;
-
   // Persistence keys
-  const STORAGE_KEY_STATS = 'istqb_stats_v1';
-  const STORAGE_KEY_BOOKMARKS = 'istqb_bookmarks_v1';
-  const STORAGE_KEY_WRONG = 'istqb_wrong_v1';
-  const STORAGE_KEY_THEME = 'istqb_theme_v1';
-  const STORAGE_KEY_SOUND = 'istqb_sound_v1';
+  const STORAGE_KEY_STATS = 'istqb_stats_v2';
+  const STORAGE_KEY_BOOKMARKS = 'istqb_bookmarks_v2';
+  const STORAGE_KEY_WRONG = 'istqb_wrong_v2';
+  const STORAGE_KEY_THEME = 'istqb_theme_v2';
 
   let userStats = {
     answered: 0,
     correct: 0,
     wrong: 0,
-    streak: 0,
     answeredIds: []
   };
 
@@ -44,7 +39,6 @@
     statCorrect: document.getElementById('stat-correct'),
     statWrong: document.getElementById('stat-wrong'),
     statRate: document.getElementById('stat-rate'),
-    statStreak: document.getElementById('stat-streak'),
 
     // Badges & Meta
     badgeSet: document.getElementById('badge-set'),
@@ -53,6 +47,7 @@
     badgePoints: document.getElementById('badge-points'),
     btnBookmarkCurrent: document.getElementById('btn-bookmark-current'),
     bookmarkIcon: document.getElementById('bookmark-icon'),
+    bookmarkText: document.getElementById('bookmark-text'),
 
     // Question content
     questionStem: document.getElementById('question-stem'),
@@ -79,11 +74,10 @@
     countWrong: document.getElementById('count-wrong'),
     countBookmarks: document.getElementById('count-bookmarks'),
     filterSet: document.getElementById('filter-set'),
-    klevelPills: document.querySelectorAll('.filter-pill'),
+    klevelSegments: document.querySelectorAll('.segment-btn'),
 
     // Header buttons
     btnToggleTheme: document.getElementById('btn-toggle-theme'),
-    btnToggleSound: document.getElementById('btn-toggle-sound'),
     btnResetStats: document.getElementById('btn-reset-stats'),
     btnOpenSearch: document.getElementById('btn-open-search'),
 
@@ -111,7 +105,7 @@
       loadNextQuestion();
     } catch (err) {
       console.error(err);
-      dom.questionStem.textContent = 'Fehler beim Laden der Fragen. Bitte stelle sicher, dass questions.json vorhanden ist.';
+      dom.questionStem.textContent = 'Fehler beim Laden des Fragenkatalogs.';
     }
   }
 
@@ -126,10 +120,6 @@
 
       const savedWrong = localStorage.getItem(STORAGE_KEY_WRONG);
       if (savedWrong) wrongQuestions = new Set(JSON.parse(savedWrong));
-
-      const savedSound = localStorage.getItem(STORAGE_KEY_SOUND);
-      if (savedSound !== null) soundEnabled = savedSound === 'true';
-      updateSoundUI();
     } catch (e) {
       console.warn('Storage read error:', e);
     }
@@ -140,7 +130,6 @@
       localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(userStats));
       localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify([...bookmarks]));
       localStorage.setItem(STORAGE_KEY_WRONG, JSON.stringify([...wrongQuestions]));
-      localStorage.setItem(STORAGE_KEY_SOUND, soundEnabled.toString());
     } catch (e) {
       console.warn('Storage save error:', e);
     }
@@ -149,16 +138,10 @@
   // Filter questions based on current settings
   function getFilteredQuestions() {
     return allQuestions.filter(q => {
-      // Mode filter
       if (activeMode === 'WRONG' && !wrongQuestions.has(q.id)) return false;
       if (activeMode === 'BOOKMARKS' && !bookmarks.has(q.id)) return false;
-
-      // Set filter
       if (activeFilterSet !== 'ALL' && q.set !== activeFilterSet) return false;
-
-      // K-Level filter
       if (activeFilterK !== 'ALL' && q.k_level !== activeFilterK) return false;
-
       return true;
     });
   }
@@ -171,7 +154,7 @@
     const pool = getFilteredQuestions();
 
     if (pool.length === 0) {
-      dom.questionStem.textContent = 'Keine Fragen für die aktuellen Filtereinstellungen gefunden.';
+      dom.questionStem.textContent = 'Keine Prüfungsfragen für die gewählte Filterkombination gefunden.';
       dom.optionsContainer.innerHTML = '';
       dom.instructionBanner.style.display = 'none';
       dom.diagramContainer.style.display = 'none';
@@ -185,7 +168,6 @@
     if (preferredQuestionId) {
       currentQuestion = pool.find(q => q.id === preferredQuestionId) || pool[0];
     } else {
-      // Pick random question, preferably one different from currentQuestion
       if (pool.length > 1 && currentQuestion) {
         const remaining = pool.filter(q => q.id !== currentQuestion.id);
         const idx = Math.floor(Math.random() * remaining.length);
@@ -203,12 +185,10 @@
   function renderQuestion(q) {
     // Badges
     dom.badgeSet.textContent = q.set;
-    dom.badgeQNum.textContent = `Frage ${q.question_number} / 40`;
-    dom.badgeKLevel.textContent = q.k_level;
-    dom.badgeKLevel.setAttribute('data-k', q.k_level);
+    dom.badgeQNum.textContent = `Frage ${q.question_number} von 40`;
+    dom.badgeKLevel.textContent = `${q.k_level}`;
     dom.badgePoints.textContent = `${q.points.toFixed(1)} ${q.points === 1 ? 'Punkt' : 'Punkte'}`;
 
-    // Bookmark button
     updateBookmarkButton();
 
     // Stem
@@ -253,18 +233,14 @@
     dom.btnNext.style.display = 'none';
     dom.explanationContainer.style.display = 'none';
 
-    // Scroll question into view smoothly
     document.getElementById('question-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   // Handle Option selection
   function handleOptionClick(letter, element) {
-    if (isChecked) return; // Locked once checked
-
-    playAudio('click');
+    if (isChecked) return;
 
     if (currentQuestion.is_multi_select) {
-      // Multi-select toggle
       if (selectedOptions.has(letter)) {
         selectedOptions.delete(letter);
         element.classList.remove('selected');
@@ -273,14 +249,12 @@
         element.classList.add('selected');
       }
     } else {
-      // Single-select: Clear previous
       selectedOptions.clear();
       dom.optionsContainer.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
       selectedOptions.add(letter);
       element.classList.add('selected');
     }
 
-    // Enable / disable check button
     dom.btnCheck.disabled = selectedOptions.size === 0;
   }
 
@@ -292,11 +266,9 @@
     const correctAnswers = new Set(currentQuestion.correct_answers);
     const selectedArr = Array.from(selectedOptions);
 
-    // Is totally correct?
     const isCorrect = selectedArr.length === correctAnswers.size &&
                       selectedArr.every(l => correctAnswers.has(l));
 
-    // Update stats
     userStats.answered += 1;
     if (!userStats.answeredIds.includes(currentQuestion.id)) {
       userStats.answeredIds.push(currentQuestion.id);
@@ -304,14 +276,10 @@
 
     if (isCorrect) {
       userStats.correct += 1;
-      userStats.streak += 1;
       wrongQuestions.delete(currentQuestion.id);
-      playAudio('success');
     } else {
       userStats.wrong += 1;
-      userStats.streak = 0;
       wrongQuestions.add(currentQuestion.id);
-      playAudio('error');
     }
 
     saveStorage();
@@ -330,26 +298,24 @@
       if (isLetterSelected) {
         if (isLetterCorrect) {
           optEl.classList.add('correct');
-          badge.textContent = '✓ Richtig';
+          badge.textContent = 'Korrekt';
           badge.style.display = 'inline-block';
         } else {
           optEl.classList.add('incorrect');
-          badge.textContent = '✕ Falsch';
+          badge.textContent = 'Nicht korrekt';
           badge.style.display = 'inline-block';
         }
       } else {
         if (isLetterCorrect) {
           optEl.classList.add('missed');
-          badge.textContent = 'Richtige Antwort';
+          badge.textContent = 'Richtige Lösung';
           badge.style.display = 'inline-block';
         }
       }
     });
 
-    // Render Explanation Card
     renderExplanations();
 
-    // Switch action buttons
     dom.btnCheck.style.display = 'none';
     dom.btnNext.style.display = 'inline-flex';
   }
@@ -374,7 +340,8 @@
 
       itemEl.innerHTML = `
         <div class="exp-item-label">
-          <span>${letter.toUpperCase()})</span>
+          <span>Option ${letter.toUpperCase()}</span>
+          <span>·</span>
           <span>${isCorrect ? 'KORREKT' : 'FALSCH'}</span>
         </div>
         <div class="exp-item-text">${escapeHtml(expText)}</div>
@@ -404,11 +371,12 @@
     const isBookmarked = bookmarks.has(currentQuestion.id);
     if (isBookmarked) {
       dom.btnBookmarkCurrent.classList.add('bookmarked');
-      dom.bookmarkIcon.textContent = '★';
-      dom.btnBookmarkCurrent.innerHTML = '<span id="bookmark-icon">★</span> Gemerkt';
+      dom.bookmarkIcon.textContent = '⚑';
+      dom.bookmarkText.textContent = 'Markiert';
     } else {
       dom.btnBookmarkCurrent.classList.remove('bookmarked');
-      dom.btnBookmarkCurrent.innerHTML = '<span id="bookmark-icon">☆</span> Merken';
+      dom.bookmarkIcon.textContent = '⚐';
+      dom.bookmarkText.textContent = 'Markieren';
     }
   }
 
@@ -424,66 +392,11 @@
       ? Math.round((userStats.correct / userStats.answered) * 100)
       : 0;
     dom.statRate.textContent = `${rate}%`;
-    dom.statStreak.textContent = `🔥 ${userStats.streak}`;
   }
 
   function updateCounts() {
     dom.countWrong.textContent = wrongQuestions.size;
     dom.countBookmarks.textContent = bookmarks.size;
-  }
-
-  // Audio synthesis using Web Audio API
-  function playAudio(type) {
-    if (!soundEnabled) return;
-    try {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      if (type === 'click') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(600, now);
-        osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
-        gain.gain.setValueAtTime(0.04, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-        osc.start(now);
-        osc.stop(now + 0.05);
-      } else if (type === 'success') {
-        // Joyful chord (C5 - E5 - G5)
-        [523.25, 659.25, 783.99].forEach((freq, i) => {
-          const chordOsc = audioCtx.createOscillator();
-          const chordGain = audioCtx.createGain();
-          chordOsc.connect(chordGain);
-          chordGain.connect(audioCtx.destination);
-          chordOsc.type = 'triangle';
-          chordOsc.frequency.setValueAtTime(freq, now + i * 0.08);
-          chordGain.gain.setValueAtTime(0.08, now + i * 0.08);
-          chordGain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
-          chordOsc.start(now + i * 0.08);
-          chordOsc.stop(now + i * 0.08 + 0.25);
-        });
-      } else if (type === 'error') {
-        // Soft low tone
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, now);
-        osc.frequency.exponentialRampToValueAtTime(140, now + 0.2);
-        gain.gain.setValueAtTime(0.08, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-        osc.start(now);
-        osc.stop(now + 0.2);
-      }
-    } catch (e) {
-      // Audio not supported or blocked
-    }
   }
 
   // Theme Handling
@@ -498,29 +411,11 @@
     }
   }
 
-  function updateSoundUI() {
-    const soundBtn = dom.btnToggleSound;
-    if (soundEnabled) {
-      soundBtn.style.color = 'var(--accent-primary)';
-      soundBtn.title = 'Sound aktiviert (Klick zum Stummschalten)';
-    } else {
-      soundBtn.style.color = 'var(--text-muted)';
-      soundBtn.title = 'Sound stummgeschaltet (Klick zum Aktivieren)';
-    }
-  }
-
   // Setup Event Listeners
   function setupEventListeners() {
-    // Check answer
     dom.btnCheck.addEventListener('click', checkAnswer);
-
-    // Next question
     dom.btnNext.addEventListener('click', () => loadNextQuestion());
-
-    // Random question
     dom.btnRandom.addEventListener('click', () => loadNextQuestion());
-
-    // Bookmark
     dom.btnBookmarkCurrent.addEventListener('click', toggleBookmark);
 
     // Modes in sidebar
@@ -530,7 +425,7 @@
 
     dom.modeWrong.addEventListener('click', () => {
       if (wrongQuestions.size === 0) {
-        alert('Aktuell sind keine falsch beantworteten Fragen gespeichert.');
+        alert('Aktuell sind keine fehlerhaft beantworteten Fragen registriert.');
         return;
       }
       setMode('WRONG', dom.modeWrong);
@@ -538,7 +433,7 @@
 
     dom.modeBookmarks.addEventListener('click', () => {
       if (bookmarks.size === 0) {
-        alert('Ihre Merkliste ist aktuell leer. Sie können Fragen mit dem Sternchen-Button oben rechts merken.');
+        alert('Ihre Merkliste ist aktuell leer. Sie können Fragen mit der Schaltfläche „Markieren“ speichern.');
         return;
       }
       setMode('BOOKMARKS', dom.modeBookmarks);
@@ -550,11 +445,11 @@
       loadNextQuestion();
     });
 
-    dom.klevelPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        dom.klevelPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        activeFilterK = pill.dataset.klevel;
+    dom.klevelSegments.forEach(seg => {
+      seg.addEventListener('click', () => {
+        dom.klevelSegments.forEach(s => s.classList.remove('active'));
+        seg.classList.add('active');
+        activeFilterK = seg.dataset.klevel;
         loadNextQuestion();
       });
     });
@@ -565,22 +460,15 @@
       updateTheme(current === 'dark' ? 'light' : 'dark');
     });
 
-    dom.btnToggleSound.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      saveStorage();
-      updateSoundUI();
-    });
-
     dom.btnResetStats.addEventListener('click', () => {
-      if (confirm('Möchten Sie Ihren gesamten Fortschritt und die Statistiken wirklich zurücksetzen?')) {
-        userStats = { answered: 0, correct: 0, wrong: 0, streak: 0, answeredIds: [] };
+      if (confirm('Möchten Sie die Sitzungsdaten und Statistiken zurücksetzen?')) {
+        userStats = { answered: 0, correct: 0, wrong: 0, answeredIds: [] };
         wrongQuestions.clear();
         bookmarks.clear();
         saveStorage();
         updateStatsUI();
         updateCounts();
         updateBookmarkButton();
-        alert('Fortschritt wurde erfolgreich zurückgesetzt.');
       }
     });
 
@@ -597,7 +485,6 @@
 
     // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
-      // Don't trigger if inside modal input
       if (document.activeElement === dom.modalSearchInput) {
         if (e.key === 'Escape') closeSearchModal();
         return;
@@ -608,14 +495,12 @@
         return;
       }
 
-      // Open search: Ctrl+K or /
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         openSearchModal();
         return;
       }
 
-      // Enter
       if (e.key === 'Enter') {
         if (!isChecked && !dom.btnCheck.disabled) {
           e.preventDefault();
@@ -626,17 +511,14 @@
         }
       }
 
-      // Random / Next: R or Z
       if (!isChecked && (e.key.toLowerCase() === 'r' || e.key.toLowerCase() === 'z')) {
         loadNextQuestion();
       }
 
-      // Bookmark: M
       if (e.key.toLowerCase() === 'm') {
         toggleBookmark();
       }
 
-      // Options 1-5 or A-E
       const key = e.key.toLowerCase();
       let targetLetter = null;
       if (['1', '2', '3', '4', '5'].includes(key)) {
@@ -682,11 +564,11 @@
         (q.meta && q.meta.toLowerCase().includes(qTrim)) ||
         q.set.toLowerCase().includes(qTrim)
       );
-    }).slice(0, 30); // show top 30 matches
+    }).slice(0, 30);
 
     dom.modalSearchResults.innerHTML = '';
     if (results.length === 0) {
-      dom.modalSearchResults.innerHTML = '<div style="color: var(--text-muted); padding: 1rem; text-align: center;">Keine passenden Fragen gefunden.</div>';
+      dom.modalSearchResults.innerHTML = '<div style="color: var(--text-muted); padding: 1rem; text-align: center;">Keine Prüfungsfragen gefunden.</div>';
       return;
     }
 
@@ -706,7 +588,6 @@
     });
   }
 
-  // Utility to escape HTML
   function escapeHtml(text) {
     if (!text) return '';
     return text
@@ -717,6 +598,5 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Start the application
   window.addEventListener('DOMContentLoaded', init);
 })();

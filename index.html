@@ -3,52 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISTQB® CTFL 4.0 Fragenautomat – 240 Originalfragen</title>
-  <meta name="description" content="Interaktiver ISTQB Certified Tester Foundation Level Fragenautomat mit 240 Originalprüfungsfragen, GTB-Lösungen und detaillierten Erklärungen.">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <title>ISTQB® CTFL 4.0 Prüfungsvorbereitung – 240 Originalfragen</title>
+  <meta name="description" content="Prüfungsportal für das ISTQB Certified Tester Foundation Level (CTFL 4.0) Zertifikat mit 240 Fragen, offiziellen GTB-Lösungen und Begründungen.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- App Header -->
+  <!-- Application Header -->
   <header class="app-header">
     <div class="header-inner">
       <div class="brand-wrapper">
-        <div class="brand-icon">Q</div>
+        <span class="brand-badge">ISTQB®</span>
         <div>
-          <h1 class="brand-title">ISTQB® Fragenautomat</h1>
-          <div class="brand-subtitle">Certified Tester Foundation Level (CTFL 4.0)</div>
+          <h1 class="brand-title">Certified Tester Foundation Level (CTFL 4.0)</h1>
+          <div class="brand-subtitle">Offizielles GTB-Musterprüfungsportal</div>
         </div>
       </div>
 
       <div class="header-actions">
-        <button id="btn-open-search" class="btn-icon" title="Fragenkatalog & Suche (Strg+K)" aria-label="Fragen suchen">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="btn-open-search" class="btn-header" title="Fragenkatalog durchsuchen (Strg+K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
+          <span>Katalog</span>
         </button>
 
-        <button id="btn-toggle-sound" class="btn-icon" title="Soundeffekte umschalten" aria-label="Sound umschalten">
-          <svg id="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-        </button>
-
-        <button id="btn-toggle-theme" class="btn-icon" title="Hell/Dunkel Modus umschalten" aria-label="Theme umschalten">
-          <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="btn-toggle-theme" class="btn-header btn-icon-only" title="Design wechseln (Hell/Dunkel)">
+          <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
 
-        <button id="btn-reset-stats" class="btn-icon" title="Statistik zurücksetzen" aria-label="Statistik zurücksetzen">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button id="btn-reset-stats" class="btn-header btn-icon-only" title="Sitzungsdaten zurücksetzen">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
             <path d="M3 3v5h5"></path>
           </svg>
@@ -57,60 +45,59 @@
     </div>
   </header>
 
-  <!-- Statistics Ribbon -->
+  <!-- Examination Status Ribbon -->
   <div class="stats-ribbon">
-    <div class="stats-grid">
-      <div class="stat-card">
+    <div class="stats-bar">
+      <div class="stat-item">
         <span class="stat-label">Fortschritt</span>
         <span id="stat-progress" class="stat-value">0 / 240</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">Richtig</span>
+      <div class="stat-item">
+        <span class="stat-label">Korrekt</span>
         <span id="stat-correct" class="stat-value success">0</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">Falsch</span>
+      <div class="stat-item">
+        <span class="stat-label">Nicht korrekt</span>
         <span id="stat-wrong" class="stat-value danger">0</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">Quote</span>
+      <div class="stat-item">
+        <span class="stat-label">Erfolgsquote</span>
         <span id="stat-rate" class="stat-value accent">0%</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-label">Serie (Streak)</span>
-        <span id="stat-streak" class="stat-value">🔥 0</span>
       </div>
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Content Layout -->
   <main class="main-content">
     
-    <!-- Sidebar Controls & Filters -->
+    <!-- Sidebar -->
     <aside class="quiz-sidebar">
       
       <div class="panel-card">
-        <h2 class="panel-title">Trainingsmodus</h2>
-        <div class="quick-actions-list">
-          <button id="mode-all" class="btn-sidebar active">
-            <span>🎲</span> Alle 240 Fragen (Zufall)
+        <div class="panel-title">Lernbereich</div>
+        <nav class="sidebar-nav-list">
+          <button id="mode-all" class="btn-sidebar-nav active">
+            <span>Alle Prüfungsfragen</span>
+            <span class="sidebar-badge">240</span>
           </button>
-          <button id="mode-wrong" class="btn-sidebar">
-            <span>🔁</span> Falsche wiederholen (<span id="count-wrong">0</span>)
+          <button id="mode-wrong" class="btn-sidebar-nav">
+            <span>Fehlerhafte wiederholen</span>
+            <span id="count-wrong" class="sidebar-badge">0</span>
           </button>
-          <button id="mode-bookmarks" class="btn-sidebar">
-            <span>⭐</span> Merkliste (<span id="count-bookmarks">0</span>)
+          <button id="mode-bookmarks" class="btn-sidebar-nav">
+            <span>Markierte Fragen</span>
+            <span id="count-bookmarks" class="sidebar-badge">0</span>
           </button>
-        </div>
+        </nav>
       </div>
 
       <div class="panel-card">
-        <h2 class="panel-title">Filter</h2>
+        <div class="panel-title">Kriterienfilter</div>
 
         <div class="filter-group">
           <label for="filter-set" class="filter-label">Prüfungssatz</label>
           <select id="filter-set" class="filter-select">
-            <option value="ALL">Alle Sets (A bis F)</option>
+            <option value="ALL">Alle Sätze (SET A bis F)</option>
             <option value="SET A">SET A (40 Fragen)</option>
             <option value="SET B">SET B (40 Fragen)</option>
             <option value="SET C">SET C (40 Fragen)</option>
@@ -121,24 +108,24 @@
         </div>
 
         <div class="filter-group">
-          <label class="filter-label">K-Level (Schwierigkeit)</label>
-          <div class="filter-pills">
-            <button class="filter-pill active" data-klevel="ALL">Alle</button>
-            <button class="filter-pill" data-klevel="K1">K1 (Wissen)</button>
-            <button class="filter-pill" data-klevel="K2">K2 (Verstehen)</button>
-            <button class="filter-pill" data-klevel="K3">K3 (Anwenden)</button>
+          <label class="filter-label">Kognitive Stufe (K-Level)</label>
+          <div class="segmented-control">
+            <button class="segment-btn active" data-klevel="ALL">Alle</button>
+            <button class="segment-btn" data-klevel="K1">K1</button>
+            <button class="segment-btn" data-klevel="K2">K2</button>
+            <button class="segment-btn" data-klevel="K3">K3</button>
           </div>
         </div>
 
       </div>
 
-      <div class="panel-card">
-        <h2 class="panel-title">Tastatur-Kürzel</h2>
-        <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
-          <div><span class="key-hint">1-5</span> oder <span class="key-hint">A-E</span> : Option wählen</div>
+      <div class="panel-card" style="font-size: 0.78rem; color: var(--text-muted);">
+        <div class="panel-title">Tastatursteuerung</div>
+        <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+          <div><span class="key-hint">1-5</span> / <span class="key-hint">A-E</span> : Option wählen</div>
           <div><span class="key-hint">Enter</span> : Prüfen / Nächste Frage</div>
-          <div><span class="key-hint">Z</span> oder <span class="key-hint">R</span> : Neue Zufallsfrage</div>
-          <div><span class="key-hint">M</span> : Frage merken (⭐)</div>
+          <div><span class="key-hint">R</span> : Neue Zufallsfrage</div>
+          <div><span class="key-hint">M</span> : Frage markieren</div>
         </div>
       </div>
 
@@ -149,18 +136,19 @@
       
       <div id="question-card" class="question-card">
 
-        <!-- Meta Bar -->
+        <!-- Question Meta Information -->
         <div class="question-meta-bar">
           <div class="meta-badges">
             <span id="badge-set" class="badge badge-set">SET A</span>
-            <span id="badge-qnum" class="badge badge-qnum">Frage 1 / 40</span>
-            <span id="badge-klevel" class="badge badge-klevel" data-k="K1">K1</span>
+            <span id="badge-qnum" class="badge badge-qnum">Frage 1 von 40</span>
+            <span id="badge-klevel" class="badge badge-klevel">K1</span>
             <span id="badge-points" class="badge badge-points">1.0 Punkt</span>
           </div>
 
           <div class="meta-tools">
             <button id="btn-bookmark-current" class="btn-bookmark" title="Frage zur Merkliste hinzufügen">
-              <span id="bookmark-icon">☆</span> Merken
+              <span id="bookmark-icon">⚐</span>
+              <span id="bookmark-text">Markieren</span>
             </button>
           </div>
         </div>
@@ -168,24 +156,23 @@
         <!-- Question Stem -->
         <div id="question-stem" class="question-stem">Lade Fragenkatalog...</div>
 
-        <!-- Diagram Container (if question has a diagram) -->
+        <!-- Optional Diagram -->
         <div id="diagram-container" class="diagram-box" style="display: none;">
-          <img id="diagram-image" class="diagram-image" src="" alt="Prüfungsdiagramm" />
-          <div class="diagram-caption">🔍 Klicke auf das Diagramm zum Vergrößern</div>
+          <img id="diagram-image" class="diagram-image" src="" alt="Prüfungsabbildung" />
+          <div class="diagram-caption">Abbildung zur Prüfungsaufgabe</div>
         </div>
 
-        <!-- Instruction Banner -->
+        <!-- Instruction Notice -->
         <div id="instruction-banner" class="instruction-banner">
-          <span id="instruction-icon">ℹ️</span>
           <span id="instruction-text">Wählen Sie EINE Option! (1 aus 4)</span>
         </div>
 
         <!-- Options Container -->
         <div id="options-container" class="options-list">
-          <!-- Dynamically filled by JS -->
+          <!-- Injected via JavaScript -->
         </div>
 
-        <!-- Controls / Buttons -->
+        <!-- Controls -->
         <div class="question-controls">
           <div class="controls-left">
             <button id="btn-check" class="btn btn-primary" disabled>
@@ -193,23 +180,23 @@
               <span class="key-hint">Enter</span>
             </button>
             <button id="btn-next" class="btn btn-secondary" style="display: none;">
-              <span>Nächste Frage ➔</span>
+              <span>Nächste Frage</span>
               <span class="key-hint">Enter</span>
             </button>
           </div>
 
           <div class="controls-right">
-            <button id="btn-random" class="btn btn-ghost" title="Beliebige neue Frage laden">
-              <span>🎲 Neue Zufallsfrage</span>
+            <button id="btn-random" class="btn btn-ghost" title="Zufällige Frage laden">
+              <span>Zufällige Frage</span>
             </button>
           </div>
         </div>
 
-        <!-- Detailed Explanation Section (shown after checking) -->
+        <!-- Official GTB Explanation Section -->
         <div id="explanation-container" class="explanation-card" style="display: none;">
           <div class="explanation-header">
             <div class="explanation-title">
-              <span>💡 GTB-Erklärung & Begründung</span>
+              <span>Offizielle Begründung der Prüfungskommission</span>
             </div>
             <div id="lo-meta-badge" class="lo-badge-full">FL-1.1.1</div>
           </div>
@@ -225,15 +212,15 @@
 
   </main>
 
-  <!-- Question Search Modal -->
+  <!-- Search Modal -->
   <div id="modal-search" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Fragenkatalog durchsuchen</h3>
-        <button id="btn-close-search" class="btn-icon" aria-label="Schließen">✕</button>
+        <h3 class="modal-title">Prüfungsfragen durchsuchen</h3>
+        <button id="btn-close-search" class="btn-header btn-icon-only" aria-label="Schließen">✕</button>
       </div>
       <div class="modal-body">
-        <input type="text" id="modal-search-input" class="modal-search" placeholder="Suchbegriff eingeben (z.B. Äquivalenzklasse, Reviews, ATDD)..." autofocus>
+        <input type="text" id="modal-search-input" class="modal-search" placeholder="Suchbegriff eingeben (z.B. Äquivalenzklassenbildung, Regressionstest, Review)...">
         <div id="modal-search-results" class="question-list-modal">
           <!-- Results injected here -->
         </div>
@@ -243,7 +230,7 @@
 
   <!-- Footer -->
   <footer class="app-footer">
-    <p>ISTQB® Certified Tester Foundation Level (CTFL 4.0) Übungsautomat · Basierend auf den offiziellen GTB-Musterprüfungen</p>
+    <p>International Software Testing Qualifications Board (ISTQB®) · Foundation Level CTFL 4.0 · GTB-Musterprüfungen</p>
   </footer>
 
   <script src="js/app.js"></script>
